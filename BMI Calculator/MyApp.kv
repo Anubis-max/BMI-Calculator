@@ -1,0 +1,78 @@
+#:kivy 2.1.0
+
+<MyGrid>:
+    FloatLayout:
+        canvas.before:
+            Color:
+                rgba: 1, 1, 1, 1 
+            Rectangle:
+                pos: root.width / 2 - (400 / 2), root.height / 2 - (600 / 2) 
+                size: 400, 600
+
+        Label:
+            text: "Calculate your BMI"
+            font_size: 30  
+            color: 0, 0, 0, 1
+            bold: True
+            pos_hint: {'center_x': .5, 'center_y': .8}  
+
+        Slider:
+            id: slider1
+            min: 0
+            max: 272
+            step: 1
+            background_width: 60
+            pos_hint: {'center_x': .5, 'center_y': .7}
+            size_hint_x: 0.6 
+            value_track: True
+            value_track_color: 1, 0, 0, 1
+            on_value: root.slider_value_cm(*args) 
+        
+        Label:
+            text: root.cm_value
+            font_size: 30
+            color: 0, 0, 0, 1
+            pos_hint: {'center_x': .4, 'center_y': .6}
+
+        Slider:
+            id: slider2
+            min: 0
+            max: 272
+            step: 1
+            background_width: 60
+            pos_hint: {'center_x': .5, 'center_y': .5}
+            size_hint_x: 0.6 
+            size_hint_y: 0.1 
+            value_track: True
+            value_track_color: 1, 0, 0, 1
+            on_value: root.slider_value_kg(*args) 
+
+        Label:
+            text: root.kg_value
+            font_size: 30
+            color: 0, 0, 0, 1
+            pos_hint: {'center_x': .4, 'center_y': .4}
+
+        Button:
+            text: "Calculate"
+            multiline: False
+            size_hint: None, None
+            size_hint_x: 0.4 
+            size_hint_y: 0.1
+            background_normal: 'img\down.png'
+            background_down: 'img\normal.png'
+            border: 40, 40, 40, 40 
+            pos_hint: {'center_x': .5, 'center_y': .3}
+            on_press: root.btn()
+
+        Label:
+            text: root.BMI_value
+            font_size: 30
+            color: 0, 0, 0, 1
+            pos_hint: {'center_x': .3, 'center_y': .2}
+
+        Label:
+            text: root.State
+            font_size: 30
+            color: 0, 0, 0, 1
+            pos_hint: {'center_x': .7, 'center_y': .2}
